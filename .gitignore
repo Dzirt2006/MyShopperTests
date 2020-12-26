@@ -1,0 +1,10 @@
+test-output/
+target/
+debug.log
+/screenshots/
+bin/
+.idea/
+.classpath
+.settings/
+.project
+src/test/resources/userData.properties
