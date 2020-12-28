@@ -7,4 +7,5 @@ bin/
 .classpath
 .settings/
 .project
+.DS_Store
 src/test/resources/userData.properties
