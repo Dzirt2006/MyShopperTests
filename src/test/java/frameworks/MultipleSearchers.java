@@ -12,7 +12,19 @@ public interface MultipleSearchers {
 		return driver.findElements(By.className(className));
 	}
 
+	default List<WebElement> getListByClassName(WebElement element, String className) {
+		return element.findElements(By.className(className));
+	}
+
 	default List<WebElement> getListByClassXpath(WebDriver driver, String xpath) {
 		return driver.findElements(By.xpath(xpath));
+	}
+
+	default List<WebElement> getListByTag(WebDriver driver, String tag) {
+		return driver.findElements(By.tagName(tag));
+	}
+
+	default List<WebElement> getListByTag(WebElement element, String tag) {
+		return element.findElements(By.tagName(tag));
 	}
 }

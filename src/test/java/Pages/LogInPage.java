@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 
 import frameworks.Waiters;
 
@@ -19,7 +20,7 @@ public class LogInPage implements Waiters {
 		this.user = user;
 		this.password = password;
 		this.driver = driver;
-		PageFactory.initElements(driver, this);
+		PageFactory.initElements(new AjaxElementLocatorFactory(driver, 15), this);
 	}
 
 	@FindBy(xpath = "//*[@id=\"root\"]/div[2]/form/center/button")
@@ -42,17 +43,17 @@ public class LogInPage implements Waiters {
 
 	public LogInPage login() {
 		driver.get(url);
-		explicitWait(loginButton, driver).click();
-		explicitWait(userNameField, driver).sendKeys(user);
-		explicitWait(nextInEmailButton, driver).click();
-		explicitWait(passField, driver).sendKeys(password);
-		explicitWait(nextInPassButton, driver).click();
+		explicitWaitClickable(loginButton, driver).click();
+		explicitWaitClickable(userNameField, driver).sendKeys(user);
+		explicitWaitClickable(nextInEmailButton, driver).click();
+		explicitWaitClickable(passField, driver).sendKeys(password);
+		explicitWaitClickable(nextInPassButton, driver).click();
 		return this;
 	}
 
 	public String getTitle() {
 		if (driver.getTitle() != "MyShopper") {
-			explicitWait(homeButton, driver);
+			explicitWaitClickable(homeButton, driver);
 		}
 		return driver.getTitle();
 	}
