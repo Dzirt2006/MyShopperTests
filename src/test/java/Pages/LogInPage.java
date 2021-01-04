@@ -1,26 +1,20 @@
 package Pages;
 
-import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import tests.MyShopperTestBase;
+import frameworks.Waiters;
 
-public class LogInPage {
+public class LogInPage implements Waiters {
 
 	private String url;
 	private String user;
 	private String password;
 	WebDriver driver;
-	WebDriverWait wait;
 
 	public LogInPage(String url, String user, String password, WebDriver driver) {
-		super();
 		this.url = url;
 		this.user = user;
 		this.password = password;
@@ -48,28 +42,19 @@ public class LogInPage {
 
 	public LogInPage login() {
 		driver.get(url);
-		w8(loginButton).click();
-		w8(userNameField).sendKeys(user);
-		w8(nextInEmailButton).click();
-		w8(passField).sendKeys(password);
-		w8(nextInPassButton).click();
+		explicitWait(loginButton, driver).click();
+		explicitWait(userNameField, driver).sendKeys(user);
+		explicitWait(nextInEmailButton, driver).click();
+		explicitWait(passField, driver).sendKeys(password);
+		explicitWait(nextInPassButton, driver).click();
 		return this;
 	}
 
 	public String getTitle() {
 		if (driver.getTitle() != "MyShopper") {
-//			driver.manage().timeouts().implicitlyWait(3000, TimeUnit.MILLISECONDS);
-			w8(homeButton);
+			explicitWait(homeButton, driver);
 		}
 		return driver.getTitle();
-	}
-
-	private WebElement w8(WebElement element) {
-		if (wait == null) {
-			wait = new WebDriverWait(driver, 3000);
-		}
-		wait.until(ExpectedConditions.elementToBeClickable(element));
-		return element;
 	}
 
 }
