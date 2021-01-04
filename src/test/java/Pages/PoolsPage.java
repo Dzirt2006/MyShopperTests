@@ -1,5 +1,7 @@
 package Pages;
 
+import java.util.List;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -20,6 +22,10 @@ public class PoolsPage {
 	WebElement inputField;
 
 	@FindBy(className = "poolList")
-	WebElement poolsList;
+	List<WebElement> poolsList;
+
+	public List<WebElement> getListOfElements() {
+		return poolsList;
+	}
 
 }
