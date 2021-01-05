@@ -14,20 +14,28 @@ public class PoolsPageActions extends PoolsPage implements ElementSearcher, Wait
 		super(driver);
 	}
 
-	public void addPool(String name) {
+	public PoolsPageActions addPool(String name) {
 		inputField.sendKeys(name);
 		addPoolButton.click();
+		return this;
 	}
 
-	public void goToPool(String name) {
+	public PoolsPageActions goToPool(String name) {
 		String xpath = "//a[contains(.,'" + name.toUpperCase() + "')]";
 		explicitWaitClickableByXpath(xpath, driver).click();
+		return this;
 	}
 
-	public void deletePool(String name) {
-		WebElement element = getPool(name.toUpperCase());
-		System.out.println(element == null);
-		getElementByTag(element, deleteButtonPath).click();
+	public PoolsPageActions deletePool(String name) {
+		try {
+			WebElement element = getPool(name.toUpperCase());
+			getElementByTag(element, deleteButtonPath).click();
+			waitInvisibility(element, driver);
+		} catch (NullPointerException e) {
+			System.err.println("Element for delete doesn't exist");
+			e.printStackTrace();
+		}
+		return this;
 	}
 
 	/**
@@ -38,6 +46,7 @@ public class PoolsPageActions extends PoolsPage implements ElementSearcher, Wait
 	 */
 
 	public WebElement getPool(String name) {
+		explicitWaitVisibleList(pools, driver);
 		WebElement res = null;
 		for (WebElement element : pools) {
 			String innerText = getPoolAnchor(element).getText();
@@ -46,6 +55,7 @@ public class PoolsPageActions extends PoolsPage implements ElementSearcher, Wait
 				break;
 			}
 		}
+		System.out.println(res == null);
 		return res;
 	}
 

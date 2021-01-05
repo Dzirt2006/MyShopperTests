@@ -1,6 +1,5 @@
 package Pages;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.openqa.selenium.WebDriver;
@@ -9,10 +8,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 
-import frameworks.ElementSearcher;
-import frameworks.Searchers;
-
-public class PoolsPage implements ElementSearcher {
+public class PoolsPage {
 	WebDriver driver;
 
 	public PoolsPage(WebDriver driver) {
