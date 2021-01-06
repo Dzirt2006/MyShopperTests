@@ -8,7 +8,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 
 public class DeletePool extends PoolsBaseTest {
-	String poolName = "bbk";
+	String poolName = "delete pool";
 
 	@Test
 	public void deletePool() {

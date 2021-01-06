@@ -44,7 +44,6 @@ public class PoolsPageActions extends PoolsPage implements ElementSearcher, Wait
 	 * @param name
 	 * @return WebElement
 	 */
-
 	public WebElement getPool(String name) {
 		explicitWaitVisibleList(pools, driver);
 		WebElement res = null;
@@ -67,4 +66,12 @@ public class PoolsPageActions extends PoolsPage implements ElementSearcher, Wait
 		driver.navigate().back();
 		return this;
 	}
+
+	public String getPoolNameFromAlert() {
+		int beginIndx = 32;
+		String alertPoolName = driver.switchTo().alert().getText().substring(beginIndx);
+		driver.switchTo().alert().dismiss();
+		return alertPoolName;
+	}
+
 }

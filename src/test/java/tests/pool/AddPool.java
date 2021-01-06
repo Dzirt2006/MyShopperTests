@@ -7,7 +7,7 @@ import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
-public class NewTest extends PoolsBaseTest {
+public class AddPool extends PoolsBaseTest {
 	String poolName = "Add pool";
 	PoolsPageActions page;
 
