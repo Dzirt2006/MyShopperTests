@@ -62,4 +62,9 @@ public class PoolsPageActions extends PoolsPage implements ElementSearcher, Wait
 	private WebElement getPoolAnchor(WebElement element) {
 		return getElementByTag(element, poolNamePath);
 	}
+
+	public PoolsPageActions goBack() {
+		driver.navigate().back();
+		return this;
+	}
 }
