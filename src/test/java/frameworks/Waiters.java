@@ -19,6 +19,14 @@ public interface Waiters {
 		return new WebDriverWait(driver, 3000).until(ExpectedConditions.elementToBeClickable(By.xpath(xpath)));
 	}
 
+	default WebElement explicitWaitVisible(WebDriver driver, WebElement element) {
+		return new WebDriverWait(driver, 3000).until(ExpectedConditions.visibilityOf(element));
+	}
+
+	default WebElement explicitWaitVisibleByXpath(WebDriver driver, String xpath) {
+		return new WebDriverWait(driver, 3000).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
+	}
+
 	default List<WebElement> explicitWaitVisibleList(List<WebElement> elements, WebDriver driver) {
 		return new WebDriverWait(driver, 3000).until(ExpectedConditions.visibilityOfAllElements(elements));
 	}
