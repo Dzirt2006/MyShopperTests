@@ -9,7 +9,7 @@ import tests.MyShopperTestBase;
 public class PoolsBaseTest extends MyShopperTestBase {
 
 	@BeforeClass
-	public void beforeMethod() {
+	public void beforeClass() {
 		new LogInPage(BaseUrl, user, password, driver).login();
 	}
 
