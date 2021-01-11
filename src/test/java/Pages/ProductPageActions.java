@@ -19,7 +19,7 @@ public class ProductPageActions extends ProductPage implements PageActionable {
 
 	public ProductPageActions addProduct(String name) {
 		try {
-			Thread.sleep(100);
+			Thread.sleep(3000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
