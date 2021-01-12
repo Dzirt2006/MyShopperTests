@@ -23,7 +23,7 @@ public class AddPool extends PoolsBaseTest {
 	}
 
 	@AfterMethod
-	public void afterMethod() {
+	public void afterPoolMethod() {
 		page.deletePool(poolName);
 	}
 

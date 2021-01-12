@@ -25,10 +25,11 @@ public class SpecCharsPoolName extends PoolsBaseTest {
 	}
 
 	@AfterMethod
-	public void afterMethod() {
+	public void afterPoolMethod() {
 		try {
 			page.dismissAlert();
 		} catch (NoAlertPresentException err) {
+			page.goBack().deletePool("");
 			System.out.println("Expected alert");
 		}
 	}

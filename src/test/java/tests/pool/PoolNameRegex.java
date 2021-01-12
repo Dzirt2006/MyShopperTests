@@ -30,7 +30,7 @@ public class PoolNameRegex extends PoolsBaseTest {
 	}
 
 	@AfterMethod
-	public void afterMethod() {
+	public void afterPoolMethod() {
 		page.goBack().deletePool(expected);
 	}
 }

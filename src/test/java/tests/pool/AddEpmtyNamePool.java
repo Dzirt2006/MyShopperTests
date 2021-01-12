@@ -25,7 +25,7 @@ public class AddEpmtyNamePool extends PoolsBaseTest {
 	}
 
 	@AfterMethod
-	public void afterMethod() {
+	public void afterPoolMethod() {
 		page.dismissAlert();
 	}
 

@@ -1,15 +1,14 @@
 package tests.pool;
 
-import org.testng.annotations.BeforeClass;
-
+import org.testng.annotations.BeforeMethod;
 
 import Pages.LogInPage;
 import tests.MyShopperTestBase;
 
 public class PoolsBaseTest extends MyShopperTestBase {
 
-	@BeforeClass
-	public void beforeClass() {
+	@BeforeMethod
+	public void beforePoolMethod() {
 		new LogInPage(BaseUrl, user, password, driver).login();
 	}
 

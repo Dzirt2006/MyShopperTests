@@ -67,6 +67,11 @@ public class PoolsPageActions extends PoolsPage implements ElementSearcher, Wait
 		return this;
 	}
 
+	public PoolsPageActions refresh() {
+		driver.navigate().refresh();
+		return this;
+	}
+
 	public String getPoolNameFromAlert() {
 		int beginIndx = 32;
 		String alertPoolName = driver.switchTo().alert().getText().substring(beginIndx);

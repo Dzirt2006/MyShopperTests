@@ -40,7 +40,6 @@ public abstract class ProductPage implements Waiters, ElementSearcher {
 	}
 
 	public WebElement getInputField() {
-		explicitWaitVisible(driver,inputField);
 		return inputField;
 	}
 
