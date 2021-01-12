@@ -15,7 +15,7 @@ public class ProductsBase extends MyShopperTestBase {
 	String poolName = "product testing pool";
 
 	@BeforeMethod
-	public void beforeM() {
+	public void pageIni() {
 		new LogInPage(BaseUrl, user, password, driver).login();
 		poolPage = new PoolsPageActions(driver);
 		try {
@@ -27,8 +27,10 @@ public class ProductsBase extends MyShopperTestBase {
 	}
 
 	@AfterMethod
-	public void afterM() {
-		poolPage.goBack().deletePool(poolName);
+	public void afterProductMethod() throws InterruptedException {
+		poolPage.goBack();
+		Thread.sleep(100);
+		poolPage.deletePool(poolName);
 	}
 
 }
