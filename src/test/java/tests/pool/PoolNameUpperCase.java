@@ -30,7 +30,7 @@ public class PoolNameUpperCase extends PoolsBaseTest {
 	}
 
 	@AfterMethod
-	public void afterMethod() {
+	public void afterPoolMethod() {
 		page.goBack().deletePool(expected);
 	}
 

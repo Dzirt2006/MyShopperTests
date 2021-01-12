@@ -38,4 +38,8 @@ public interface Waiters {
 	default void waitInvisibility(WebElement element, WebDriver driver) {
 		new WebDriverWait(driver, 3000).until(ExpectedConditions.invisibilityOf(element));
 	}
+	
+//	default void waitEnailability(WebElement element, WebDriver driver) {
+//		new WebDriverWait(driver, 3000).until(ExpectedConditions.e);
+//	}
 }

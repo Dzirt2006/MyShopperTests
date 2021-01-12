@@ -17,7 +17,7 @@ public class DeletePool extends PoolsBaseTest {
 	}
 
 	@BeforeMethod
-	public void beforeClass() {
+	public void pageIni() {
 		new PoolsPageActions(driver).addPool(poolName);
 		driver.navigate().back();
 	}

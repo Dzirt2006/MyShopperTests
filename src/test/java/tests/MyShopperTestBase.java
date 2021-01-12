@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 
@@ -16,7 +17,7 @@ public class MyShopperTestBase {
 	protected String user;
 	protected String password;
 
-	@BeforeTest
+	@BeforeMethod
 	public void beforeMethod(ITestContext context) {
 		TestLoadManager manager = new TestLoadManager();
 		getConfig(manager);
@@ -26,7 +27,7 @@ public class MyShopperTestBase {
 	}
 
 	@AfterMethod
-	public void afterMethod(ITestResult result) {
+	public void afterMethod() {
 		driver.close();
 	}
 

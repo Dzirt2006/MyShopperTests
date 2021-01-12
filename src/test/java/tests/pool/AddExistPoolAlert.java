@@ -24,7 +24,7 @@ public class AddExistPoolAlert extends PoolsBaseTest {
 	}
 
 	@AfterMethod
-	public void afterMethod() {
+	public void afterPoolMethod() {
 		page.deletePool(poolName);
 	}
 
