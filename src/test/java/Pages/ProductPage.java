@@ -28,7 +28,7 @@ public abstract class ProductPage implements Waiters, ElementSearcher {
 	@FindBy(id = "formBasic")
 	private WebElement inputField;
 
-	@FindBy(className = "list-group list-group-flush")
+	@FindBy(className = "list-group")
 	private List<WebElement> products;
 
 	public WebElement getPoolNameElement() {
@@ -44,7 +44,6 @@ public abstract class ProductPage implements Waiters, ElementSearcher {
 	}
 
 	public List<WebElement> getProducts() {
-		explicitWaitVisibleList(products, driver);
 		return products;
 	}
 
