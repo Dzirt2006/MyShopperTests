@@ -18,15 +18,7 @@ public class ProductPageActions extends ProductPage implements PageActionable {
 	}
 
 	public ProductPageActions addProduct(String name) {
-//		try {
-//			Thread.sleep(3000);
-//		} catch (InterruptedException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-		System.out.println(name);
 		if (getPoolName() != null) {
-//			explicitWaitVisibleByXpath(driver, "//input[@id='formBasic']").sendKeys(name);
 			getInputField().sendKeys(name);
 			getAddProductButton().click();
 		}
@@ -36,6 +28,7 @@ public class ProductPageActions extends ProductPage implements PageActionable {
 	public ProductPageActions deleteProduct(String name) {
 		try {
 			WebElement element = getProduct(name.toLowerCase());
+			System.out.println(getElementByTag(element, deleteButtonPath));
 			getElementByTag(element, deleteButtonPath).click();
 			waitInvisibility(element, driver);
 		} catch (NullPointerException e) {
@@ -46,6 +39,7 @@ public class ProductPageActions extends ProductPage implements PageActionable {
 	}
 
 	public WebElement getProduct(String name) {
+		explicitWaitVisibleList(getProducts(), driver);
 		WebElement product = null;
 		for (WebElement element : getProducts()) {
 			String productName = getElementByXpath(element, nameXpath).getText();
