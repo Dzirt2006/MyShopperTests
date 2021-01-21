@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 import Pages.ProductPageActions;
 import frameworks.FailListener;
 
-@Listeners(FailListener.class)
+//@Listeners(FailListener.class)
 public class AddDublicateProduct extends ProductsBase {
 	String product = "pineapple";
 	ProductPageActions page;
