@@ -58,18 +58,15 @@ public class ProductPageActions extends ProductPage implements PageActionable, A
 	}
 
 	public String getProductNameFromAlert(String productName) {
-		waitAlertPresent(driver);
 		int lastIndx = productName.length();
 		return getNameFromAlert(driver, 0, lastIndx);
 	}
 
 	public String getAlert() {
-		waitAlertPresent(driver);
 		return getAlert(driver);
 	}
 
 	public void dismissAlert() {
-		waitAlertPresent(driver);
 		dismissAlert(driver);
 	}
 

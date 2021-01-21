@@ -19,12 +19,11 @@ public class ProductsBase extends MyShopperTestBase {
 	public void pageIni() {
 		new LogInPage(BaseUrl, user, password, driver).login();
 		poolPage = new PoolsPageActions(driver);
-		try {
-			poolPage.addPool(poolName);
-		} catch (UnhandledAlertException err) {
-			poolPage.dismissAlert();
-			poolPage.goToPool(poolName);
-		}
+		poolPage.addPool(poolName);
+//		if (poolPage.getAlert() != null) {
+//			poolPage.dismissAlert();
+//			poolPage.goToPool(poolName);
+//		}
 	}
 
 	@AfterMethod

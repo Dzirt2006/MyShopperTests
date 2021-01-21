@@ -23,13 +23,5 @@ public class AddDublicateProduct extends ProductsBase {
 	public void addProduct() {
 		page = new ProductPageActions(driver).addProduct(product);
 	}
-//	@AfterMethod
-//	public void dismissAlert() {
-//		try {
-//			Thread.sleep(300);
-//		} catch (InterruptedException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//	}
+
 }

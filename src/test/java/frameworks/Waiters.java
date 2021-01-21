@@ -39,9 +39,7 @@ public interface Waiters {
 		new WebDriverWait(driver, 3000).until(ExpectedConditions.invisibilityOf(element));
 	}
 
-	default void waitAlertPresent(WebDriver driver) {
-		new WebDriverWait(driver, 3000).until(ExpectedConditions.alertIsPresent());
-	}
+	
 
 //	default void waitEnailability(WebElement element, WebDriver driver) {
 //		new WebDriverWait(driver, 3000).until(ExpectedConditions.e);
