@@ -6,6 +6,7 @@ import tests.MyShopperTestBase;
 
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
+import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.UnhandledAlertException;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
@@ -20,16 +21,24 @@ public class ProductsBase extends MyShopperTestBase {
 		poolPage = new PoolsPageActions(driver);
 		try {
 			poolPage.addPool(poolName);
-		} catch (UnhandledAlertException e) {
+		} catch (UnhandledAlertException err) {
 			poolPage.dismissAlert();
 			poolPage.goToPool(poolName);
 		}
 	}
 
-	@AfterMethod
-	public void afterProductMethod() throws InterruptedException {
+//	@AfterMethod
+//	public void afterProductMethod() {
+//		deletePool();
+//	}
+
+	private void deletePool() {
 		poolPage.goBack();
-		Thread.sleep(100);
+		try {
+			Thread.sleep(100);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		poolPage.deletePool(poolName);
 	}
 
