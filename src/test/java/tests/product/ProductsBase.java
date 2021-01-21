@@ -27,10 +27,10 @@ public class ProductsBase extends MyShopperTestBase {
 		}
 	}
 
-//	@AfterMethod
-//	public void afterProductMethod() {
-//		deletePool();
-//	}
+	@AfterMethod
+	public void afterProductMethod() {
+		deletePool();
+	}
 
 	private void deletePool() {
 		poolPage.goBack();

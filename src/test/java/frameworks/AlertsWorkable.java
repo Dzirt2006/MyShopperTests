@@ -9,14 +9,9 @@ public interface AlertsWorkable {
 		dismissAlert(driver);
 		return alertPoolName;
 	}
-	default String getNameFromAlert(WebDriver driver, int beginIndx,int endIndx) {
-		try {
-			Thread.sleep(100);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		String alertPoolName = driver.switchTo().alert().getText().substring(beginIndx,endIndx);
+
+	default String getNameFromAlert(WebDriver driver, int beginIndx, int endIndx) {
+		String alertPoolName = driver.switchTo().alert().getText().substring(beginIndx, endIndx);
 		dismissAlert(driver);
 		return alertPoolName;
 	}
