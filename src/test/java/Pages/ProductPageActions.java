@@ -3,9 +3,11 @@ package Pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import frameworks.AlertsWorkable;
 import frameworks.PageActionable;
+import frameworks.Waiters;
 
-public class ProductPageActions extends ProductPage implements PageActionable {
+public class ProductPageActions extends ProductPage implements PageActionable, AlertsWorkable, Waiters {
 	private String nameXpath = "//div[1]";
 	private String deleteButtonPath = "button";
 
@@ -18,6 +20,11 @@ public class ProductPageActions extends ProductPage implements PageActionable {
 	}
 
 	public ProductPageActions addProduct(String name) {
+		try {
+			Thread.sleep(100);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		if (getPoolName() != null) {
 			getInputField().sendKeys(name);
 			getAddProductButton().click();
@@ -48,6 +55,19 @@ public class ProductPageActions extends ProductPage implements PageActionable {
 			}
 		}
 		return product;
+	}
+
+	public String getProductNameFromAlert(String productName) {
+		int lastIndx = productName.length();
+		return getNameFromAlert(driver, 0, lastIndx);
+	}
+
+	public String getAlert() {
+		return getAlert(driver);
+	}
+
+	public void dismissAlert() {
+		dismissAlert(driver);
 	}
 
 }

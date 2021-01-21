@@ -3,10 +3,11 @@ package Pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import frameworks.AlertsWorkable;
 import frameworks.ElementSearcher;
 import frameworks.Waiters;
 
-public class PoolsPageActions extends PoolsPage implements ElementSearcher, Waiters {
+public class PoolsPageActions extends PoolsPage implements ElementSearcher, Waiters, AlertsWorkable {
 	private String poolNamePath = "a";
 	private String deleteButtonPath = "button";
 
@@ -74,17 +75,16 @@ public class PoolsPageActions extends PoolsPage implements ElementSearcher, Wait
 
 	public String getPoolNameFromAlert() {
 		int beginIndx = 32;
-		String alertPoolName = driver.switchTo().alert().getText().substring(beginIndx);
-		dismissAlert();
-		return alertPoolName;
+		return getNameFromAlert(driver, beginIndx);
 	}
 
-	public void dismissAlert() {
-		driver.switchTo().alert().dismiss();
+	public PoolsPageActions dismissAlert() {
+		dismissAlert(driver);
+		return this;
 	}
 
 	public String getAlert() {
-		return driver.switchTo().alert().getText();
+		return getAlert(driver);
 	}
 
 }
