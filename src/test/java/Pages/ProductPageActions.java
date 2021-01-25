@@ -8,7 +8,7 @@ import frameworks.PageActionable;
 import frameworks.Waiters;
 
 public class ProductPageActions extends ProductPage implements PageActionable, AlertsWorkable, Waiters {
-	private String nameXpath = "//div[1]";
+	private String nameXpath = "//div/div[1]";
 	private String deleteButtonPath = "button";
 
 	public ProductPageActions(WebDriver driver) {
@@ -28,6 +28,7 @@ public class ProductPageActions extends ProductPage implements PageActionable, A
 		if (getPoolName() != null) {
 			getInputField().sendKeys(name);
 			getAddProductButton().click();
+			waitCompletePageLoad(driver);
 		}
 		return this;
 	}
@@ -45,11 +46,15 @@ public class ProductPageActions extends ProductPage implements PageActionable, A
 		return this;
 	}
 
+	//*[@id="root"]/div[3]/div[2]/div/div[1]/form/div/div[1]
+	
 	public WebElement getProduct(String name) {
 		explicitWaitVisibleList(getProducts(), driver);
+		System.out.println(getProducts().size());
 		WebElement product = null;
 		for (WebElement element : getProducts()) {
-			String productName = getElementByXpath(element, nameXpath).getText();
+			String productName = getElementByXpath(element, nameXpath).getText(); // wrong locator, takes not from element,takes from whole page
+			System.out.println(element.getTagName());
 			if (productName.equals(name.toLowerCase())) {
 				product = element;
 			}
