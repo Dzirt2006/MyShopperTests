@@ -23,6 +23,7 @@ public class Screenshot {
 	public static void makeScreenshot(ITestContext obj, WebDriver driver) {
 		String fileName = fileName(obj) + ".png";
 		String direction = Paths.get(".").toAbsolutePath().normalize().toString() + "\\screenshots\\";
+		System.out.println(fileName);
 		File source = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 		try {
 			FileUtils.copyFile(source, new File(direction + fileName));

@@ -8,7 +8,7 @@ import frameworks.PageActionable;
 import frameworks.Waiters;
 
 public class ProductPageActions extends ProductPage implements PageActionable, AlertsWorkable, Waiters {
-	private String nameXpath = "//div[1]";
+	private String nameXpath = ".//div/div[1]"; // '.' prevent global search when we are searching in the element
 	private String deleteButtonPath = "button";
 
 	public ProductPageActions(WebDriver driver) {
@@ -28,6 +28,7 @@ public class ProductPageActions extends ProductPage implements PageActionable, A
 		if (getPoolName() != null) {
 			getInputField().sendKeys(name);
 			getAddProductButton().click();
+			waitCompletePageLoad(driver);
 		}
 		return this;
 	}

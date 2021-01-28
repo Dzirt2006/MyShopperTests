@@ -18,7 +18,7 @@ public class AddPool extends PoolsBaseTest {
 
 	@Test
 	public void addPool() {
-		boolean actual = page.addPool(poolName).goBack().getPool(poolName) != null;
+		boolean actual = page.addPool(poolName).goBack().getPoolFromList(poolName) != null;
 		Assert.assertTrue(actual);
 	}
 

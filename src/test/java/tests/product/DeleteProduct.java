@@ -12,7 +12,7 @@ public class DeleteProduct extends ProductsBase {
 
 	@Test
 	public void delete_product() {
-		boolean actual = page.deleteProduct(product).getProduct(product) == null;
+		boolean actual = page.deleteProduct(product).getProduct(product) == null; //rebuild getProduct
 		Assert.assertTrue(actual);
 	}
 
