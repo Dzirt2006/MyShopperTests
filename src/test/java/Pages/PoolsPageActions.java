@@ -29,7 +29,7 @@ public class PoolsPageActions extends PoolsPage implements ElementSearcher, Wait
 
 	public PoolsPageActions deletePool(String name) {
 		try {
-			WebElement element = getPool(name.toUpperCase());
+			WebElement element = getPoolFromList(name.toUpperCase());
 			getElementByTag(element, deleteButtonPath).click();
 			waitInvisibility(element, driver);
 		} catch (NullPointerException e) {
@@ -40,12 +40,13 @@ public class PoolsPageActions extends PoolsPage implements ElementSearcher, Wait
 	}
 
 	/**
-	 * get exact pool with name from list of pools
+	 * get exact pool with name from list of pools doesn't work when all elements of
+	 * the list deleted
 	 * 
 	 * @param name
 	 * @return WebElement
 	 */
-	public WebElement getPool(String name) {
+	public WebElement getPoolFromList(String name) {
 		explicitWaitVisibleList(pools, driver);
 		WebElement res = null;
 		for (WebElement element : pools) {
@@ -55,9 +56,10 @@ public class PoolsPageActions extends PoolsPage implements ElementSearcher, Wait
 				break;
 			}
 		}
-		System.out.println(res == null);
 		return res;
 	}
+	
+	
 
 	private WebElement getPoolAnchor(WebElement element) {
 		return getElementByTag(element, poolNamePath);

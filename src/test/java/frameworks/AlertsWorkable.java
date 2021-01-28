@@ -21,12 +21,12 @@ public interface AlertsWorkable  {
 	}
 
 	default void dismissAlert(WebDriver driver) {
-		waitAlertPresent(driver);
+//		waitAlertPresent(driver);
 		driver.switchTo().alert().dismiss();
 	}
 
 	default String getAlert(WebDriver driver) {
-		waitAlertPresent(driver);
+//		waitAlertPresent(driver);
 		return driver.switchTo().alert().getText();
 	}
 	

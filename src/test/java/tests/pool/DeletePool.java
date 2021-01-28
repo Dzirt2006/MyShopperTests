@@ -9,16 +9,17 @@ import org.testng.annotations.BeforeMethod;
 
 public class DeletePool extends PoolsBaseTest {
 	String poolName = "delete pool";
+	PoolsPageActions page;
 
 	@Test
 	public void deletePool() {
-		boolean actual = new PoolsPageActions(driver).deletePool(poolName).getPool(poolName) == null;
+		boolean actual = page.deletePool(poolName).getPoolsList() == null;
 		Assert.assertTrue(actual);
 	}
 
 	@BeforeMethod
 	public void pageIni() {
-		new PoolsPageActions(driver).addPool(poolName);
+		page = new PoolsPageActions(driver).addPool(poolName);
 		driver.navigate().back();
 	}
 
