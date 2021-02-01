@@ -47,15 +47,20 @@ public class ProductPageActions extends ProductPage implements PageActionable, A
 	}
 
 	public WebElement getProduct(String name) {
-		explicitWaitVisibleList(getProducts(), driver);
-		WebElement product = null;
-		for (WebElement element : getProducts()) {
-			String productName = getElementByXpath(element, nameXpath).getText();
-			if (productName.equals(name.toLowerCase())) {
-				product = element;
+		try {
+			explicitWaitVisibleList(getProducts(), driver);
+			WebElement product = null;
+			for (WebElement element : getProducts()) {
+				String productName = getElementByXpath(element, nameXpath).getText();
+				if (productName.equals(name.toLowerCase())) {
+					product = element;
+				}
+				return product;
 			}
+		} catch (org.openqa.selenium.TimeoutException err) {
+			System.out.println("List doesn't exist");
 		}
-		return product;
+		return null;
 	}
 
 	public String getProductNameFromAlert(String productName) {
