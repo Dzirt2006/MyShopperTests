@@ -12,6 +12,7 @@ public class ConfigurationProvider {
 		InputStream inputStream = null;
 		Properties props = new Properties();
 		try {
+			// against ConfigurationProvider.class can use gelClass()
 			inputStream = ConfigurationProvider.class.getClassLoader().getResourceAsStream(fileName);
 			if (inputStream == null) {
 				System.out.println("FILE NOT FOUND! " + fileName);
@@ -19,7 +20,7 @@ public class ConfigurationProvider {
 			}
 			props.load(inputStream);
 		} finally {
-//			inputStream.close();
+			inputStream.close();
 		}
 
 		HashMap<String, String> dataMap = new HashMap<String, String>();
