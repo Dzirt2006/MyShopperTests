@@ -32,7 +32,7 @@ public class MyShopperTestBase {
 	}
 
 	private void getConfig(TestLoadManager manager) {
-		manager.loadConfigurations("config.properties");
+		manager.loadConfigurations("myShopperConfig.properties");
 		driver = manager.driver;
 		BaseUrl = manager.baseUrl;
 	}

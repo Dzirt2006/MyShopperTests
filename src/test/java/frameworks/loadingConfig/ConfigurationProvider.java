@@ -12,13 +12,14 @@ public class ConfigurationProvider {
 		InputStream inputStream = null;
 		Properties props = new Properties();
 		try {
-			inputStream = getClass().getClassLoader().getResourceAsStream(fileName);
+			inputStream = ConfigurationProvider.class.getClassLoader().getResourceAsStream(fileName);
 			if (inputStream == null) {
+				System.out.println("FILE NOT FOUND! " + fileName);
 				throw new FileNotFoundException(fileName + " not found");
 			}
 			props.load(inputStream);
 		} finally {
-			inputStream.close();
+//			inputStream.close();
 		}
 
 		HashMap<String, String> dataMap = new HashMap<String, String>();
