@@ -31,8 +31,7 @@ public class PoolsPage implements MultipleSearchers, Waiters {
 	/**
 	 * use when we have to create one pool and want to delete it otherwise pools
 	 * will contain deleted pool
-	 * 
-	 * @return List<WebElement>
+		 * @return List<WebElement>
 	 */
 	public List<WebElement> getPoolsList() {
 		List<WebElement> list = null;
